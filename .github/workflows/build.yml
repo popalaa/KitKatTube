@@ -9,8 +9,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Unzip project
         run: unzip -q KitKatTube.zip
-      - name: Upgrade AGP
-        run: sed -i "s/7.4.2/8.5.2/" KitKatTube/build.gradle
+      - name: Patch versions
+        run: |
+          sed -i "s/7.4.2/8.5.2/" KitKatTube/build.gradle
+          sed -i "s#desugar_jdk_libs:2.0.4#desugar_jdk_libs_nio:2.1.5#" KitKatTube/app/build.gradle
+          grep desugar KitKatTube/app/build.gradle
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

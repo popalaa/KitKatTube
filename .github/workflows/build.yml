@@ -10,14 +10,14 @@ jobs:
       - name: Unzip project
         run: unzip -q KitKatTube.zip
       - name: Upgrade AGP
-        run: sed -i "s/7.4.2/8.1.4/" KitKatTube/build.gradle
+        run: sed -i "s/7.4.2/8.5.2/" KitKatTube/build.gradle
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.2
+          gradle-version: 8.7
       - name: Build debug APK
         working-directory: KitKatTube
         run: gradle assembleDebug --stacktrace

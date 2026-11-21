@@ -13,9 +13,9 @@ jobs:
         run: |
           sed -i "s/7.4.2/8.5.2/" KitKatTube/build.gradle
           sed -i "s#desugar_jdk_libs:2.0.4#desugar_jdk_libs_nio:2.1.5#" KitKatTube/app/build.gradle
+          sed -i "s/NewPipeExtractor:v0.24.2/NewPipeExtractor:v0.26.5/" KitKatTube/app/build.gradle
           sed -i 's/android:label="KitKatTube"/android:label="KitKat2"/' KitKatTube/app/src/main/AndroidManifest.xml
-          grep desugar KitKatTube/app/build.gradle
-          grep label KitKatTube/app/src/main/AndroidManifest.xml
+          grep -E "desugar|NewPipeExtractor" KitKatTube/app/build.gradle
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
